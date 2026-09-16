@@ -49,7 +49,7 @@ const CELL_TYPES = {
   21: 'ice', 22: 'soal', 23: 'soal', 24: 'ice', 25: 'finish'
 };
 
-// Data Soal & Kunci Jawaban Berbasis Teks
+// Data Soal & Kunci Jawaban Berbasis Teks (14 soal, 1 soal per kotak SOAL)
 const DATA_SOAL = [
   {
     soal: "<p style='font-weight:600;'>Hitung jumlah 4 suku pertama dari deret berikut!</p><p style='font-size:1.2rem; font-weight:700; margin-top:8px;'>3 + 6 + 12 + 24</p>",
@@ -58,10 +58,6 @@ const DATA_SOAL = [
   {
     soal: "<p style='font-weight:600;'>Hitung jumlah 5 suku pertama dari deret berikut!</p><p style='font-size:1.2rem; font-weight:700; margin-top:8px;'>1 + 2 + 4 + 8 + 16</p>",
     kunci: "<p style='font-size:1.1rem; font-weight:700; color:#16a34a;'>Jawaban: 31</p>"
-  },
-  {
-    soal: "<p style='font-weight:600;'>Hitung jumlah 4 suku pertama dari deret berikut!</p><p style='font-size:1.2rem; font-weight:700; margin-top:8px;'>5 + 10 + 20 + 40</p>",
-    kunci: "<p style='font-size:1.1rem; font-weight:700; color:#16a34a;'>Jawaban: 75</p>"
   },
   {
     soal: "<p style='font-weight:600;'>Jumlah bakteri pada hari pertama adalah 100. Setiap hari jumlahnya menjadi dua kali lipat. Berapa jumlah bakteri pada hari ke-5?</p>",
@@ -93,16 +89,144 @@ const DATA_SOAL = [
     `
   },
   {
-    soal: "<p style='font-weight:600;'>Tentukan rasio dari deret berikut:</p><p style='font-size:1.2rem; font-weight:700; margin-top:8px;'>4, 12, 36, 108, ...</p>",
+    soal: "<p style='font-weight:600;'>Diketahui deret geometri:</p><p style='font-size:1.2rem; font-weight:700; margin-top:8px;'>2 + 6 + 18 + 54 + ...</p><p style='font-weight:600; margin-top:8px;'>Hitunglah jumlah 6 suku pertama (S6) dari deret tersebut!</p>",
     kunci: `
       <div style='text-align:left; line-height:1.6;'>
-        <strong>Jawaban:</strong><br>
-        r = 12 ÷ 4<br>
+        <strong>Diketahui:</strong><br>
+        a = 2, r = 3, n = 6<br><br>
+        S<sub>6</sub> = a(r<sup>n</sup> − 1) / (r − 1)<br>
+        S<sub>6</sub> = 2(3<sup>6</sup> − 1) / (3 − 1)<br>
+        S<sub>6</sub> = 2(729 − 1) / 2<br>
+        <strong>S<sub>6</sub> = 728</strong>
+      </div>
+    `
+  },
+  {
+    soal: "<p style='font-weight:600;'>Diketahui deret geometri:</p><p style='font-size:1.2rem; font-weight:700; margin-top:8px;'>64 + 32 + 16 + 8 + ...</p><p style='font-weight:600; margin-top:8px;'>Hitunglah jumlah 5 suku pertama (S5) dari deret tersebut!</p>",
+    kunci: `
+      <div style='text-align:left; line-height:1.6;'>
+        <strong>Diketahui:</strong><br>
+        a = 64, r = 1/2, n = 5<br><br>
+        S<sub>5</sub> = a(1 − r<sup>n</sup>) / (1 − r)<br>
+        S<sub>5</sub> = 64(1 − (1/2)<sup>5</sup>) / (1 − 1/2)<br>
+        S<sub>5</sub> = 64(31/32) / (1/2)<br>
+        <strong>S<sub>5</sub> = 124</strong>
+      </div>
+    `
+  },
+  {
+    soal: "<p style='font-weight:600;'>Suatu deret geometri memiliki rasio r = 2 dan jumlah 4 suku pertamanya (S4) adalah 75. Tentukan nilai suku pertamanya (a)!</p>",
+    kunci: `
+      <div style='text-align:left; line-height:1.6;'>
+        <strong>Diketahui:</strong><br>
+        r = 2, S<sub>4</sub> = 75<br><br>
+        S<sub>4</sub> = a(r<sup>4</sup> − 1) / (r − 1)<br>
+        75 = a(16 − 1) / 1<br>
+        75 = 15a<br>
+        <strong>a = 5</strong>
+      </div>
+    `
+  },
+  {
+    soal: "<p style='font-weight:600;'>Jumlah 3 suku pertama dari suatu deret geometri adalah 26. Jika suku pertamanya a = 2, tentukan nilai rasionya (r)!</p>",
+    kunci: `
+      <div style='text-align:left; line-height:1.6;'>
+        <strong>Diketahui:</strong><br>
+        a = 2, S<sub>3</sub> = 26<br><br>
+        S<sub>3</sub> = a(r<sup>3</sup> − 1) / (r − 1) = 26<br>
+        1 + r + r² = 13<br>
+        r² + r − 12 = 0 → (r − 3)(r + 4) = 0<br>
         <strong>r = 3</strong>
+      </div>
+    `
+  },
+  {
+    soal: "<p style='font-weight:600;'>Diketahui suku pertama suatu deret geometri adalah a = 3 dan rasionya r = 2. Jika jumlah seluruh suku-sukunya (Sn) adalah 93, berapa banyaknya suku (n) pada deret tersebut?</p>",
+    kunci: `
+      <div style='text-align:left; line-height:1.6;'>
+        <strong>Diketahui:</strong><br>
+        a = 3, r = 2, S<sub>n</sub> = 93<br><br>
+        S<sub>n</sub> = a(2<sup>n</sup> − 1) / (2 − 1) = 93<br>
+        2<sup>n</sup> − 1 = 31 → 2<sup>n</sup> = 32<br>
+        <strong>n = 5</strong>
+      </div>
+    `
+  },
+  {
+    soal: "<p style='font-weight:600;'>Diketahui jumlah 5 suku pertama suatu deret geometri adalah 242, dengan suku pertama 2. Tentukan rasionya!</p>",
+    kunci: `
+      <div style='text-align:left; line-height:1.6;'>
+        <strong>Diketahui:</strong><br>
+        a = 2, S<sub>5</sub> = 242<br><br>
+        (r<sup>5</sup> − 1) / (r − 1) = 121<br>
+        Dicoba r = 3 → (243 − 1)/2 = 121 ✓<br>
+        <strong>r = 3</strong>
+      </div>
+    `
+  },
+  {
+    soal: "<p style='font-weight:600;'>Suatu deret geometri memiliki suku pertama 3 dan jumlah 6 suku pertama adalah 189. Tentukan rasionya!</p>",
+    kunci: `
+      <div style='text-align:left; line-height:1.6;'>
+        <strong>Diketahui:</strong><br>
+        a = 3, S<sub>6</sub> = 189<br><br>
+        (r<sup>6</sup> − 1) / (r − 1) = 63<br>
+        Dicoba r = 2 → (64 − 1)/1 = 63 ✓<br>
+        <strong>r = 2</strong>
+      </div>
+    `
+  },
+  {
+    soal: "<p style='font-weight:600;'>Diketahui suku pertama 4 dan rasio 3. Jika jumlah beberapa suku pertamanya adalah 484, tentukan banyak suku (n)!</p>",
+    kunci: `
+      <div style='text-align:left; line-height:1.6;'>
+        <strong>Diketahui:</strong><br>
+        a = 4, r = 3, S<sub>n</sub> = 484<br><br>
+        S<sub>n</sub> = 4(3<sup>n</sup> − 1) / (3 − 1) = 484<br>
+        3<sup>n</sup> − 1 = 242 → 3<sup>n</sup> = 243<br>
+        <strong>n = 5 suku</strong>
+      </div>
+    `
+  },
+  {
+    soal: "<p style='font-weight:600;'>Jumlah 3 suku pertama suatu deret geometri adalah 21, sedangkan jumlah 6 suku pertamanya adalah 189. Tentukan suku pertama (a) dan rasionya (r)!</p>",
+    kunci: `
+      <div style='text-align:left; line-height:1.6;'>
+        <strong>Diketahui:</strong><br>
+        S<sub>3</sub> = 21, S<sub>6</sub> = 189<br><br>
+        S<sub>6</sub> = S<sub>3</sub>(1 + r<sup>3</sup>)<br>
+        189 = 21(1 + r<sup>3</sup>) → 1 + r<sup>3</sup> = 9 → r<sup>3</sup> = 8 → r = 2<br>
+        S<sub>3</sub> = a(2<sup>3</sup> − 1)/(2 − 1) = 7a = 21<br>
+        <strong>a = 3, r = 2</strong>
+      </div>
+    `
+  },
+  {
+    soal: "<p style='font-weight:600;'>Diketahui suku pertama 5 dan rasio −2. Tentukan jumlah 7 suku pertama (S7)!</p>",
+    kunci: `
+      <div style='text-align:left; line-height:1.6;'>
+        <strong>Diketahui:</strong><br>
+        a = 5, r = −2, n = 7<br><br>
+        S<sub>7</sub> = a(r<sup>7</sup> − 1) / (r − 1)<br>
+        S<sub>7</sub> = 5((−2)<sup>7</sup> − 1) / (−2 − 1)<br>
+        S<sub>7</sub> = 5(−129) / (−3)<br>
+        <strong>S<sub>7</sub> = 215</strong>
       </div>
     `
   }
 ];
+
+// Urutan kotak bertipe SOAL di papan (ascending), dipetakan 1:1 ke DATA_SOAL
+// sehingga setiap kotak SOAL punya soalnya sendiri (tidak diacak/diputar).
+const SOAL_CELL_ORDER = Object.keys(CELL_TYPES)
+  .map(Number)
+  .filter(num => CELL_TYPES[num] === 'soal')
+  .sort((a, b) => a - b);
+
+const QUESTION_BY_CELL = {};
+SOAL_CELL_ORDER.forEach((cellNum, idx) => {
+  QUESTION_BY_CELL[cellNum] = DATA_SOAL[idx % DATA_SOAL.length];
+});
 
 const DATA_ICE_BREAKING = [
   "Sebutkan 5 bangun ruang!",
@@ -114,7 +238,6 @@ const DATA_ICE_BREAKING = [
 
 let currentPosition = 1;
 let isRolling = false;
-let currentQuestionIndex = 0;
 
 let gameDifficulty = 'hard';
 
@@ -329,8 +452,7 @@ function triggerEvent(pos) {
   const type = CELL_TYPES[pos];
 
   if (type === 'soal') {
-    const item = DATA_SOAL[currentQuestionIndex % DATA_SOAL.length];
-    currentQuestionIndex++;
+    const item = QUESTION_BY_CELL[pos];
 
     openModal(
       "SOAL",
