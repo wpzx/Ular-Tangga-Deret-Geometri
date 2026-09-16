@@ -60,7 +60,7 @@ const DATA_SOAL = [
     kunci: "<p style='font-size:1.1rem; font-weight:700; color:#16a34a;'>Jawaban: 31</p>"
   },
   {
-    soal: "<p style='font-weight:600;'>Jumlah bakteri pada hari pertama adalah 100. Setiap hari jumlahnya menjadi dua kali lipat. Berapa jumlah bakteri pada hari ke-5?</p>",
+    soal: "<p style='font-weight:600;'>Ditubuh Emi dan Imron, Jumlah bakteri pada hari pertama adalah 100. Setiap hari jumlahnya menjadi dua kali lipat. Berapa jumlah bakteri pada hari ke-5?</p>",
     kunci: `
       <div style='text-align:left; line-height:1.6;'>
         <strong>Diketahui:</strong><br>
@@ -75,7 +75,7 @@ const DATA_SOAL = [
     `
   },
   {
-    soal: "<p style='font-weight:600;'>Sebuah bola dijatuhkan dari ketinggian 16 meter. Setiap pantulan mencapai setengah dari tinggi sebelumnya. Berapa tinggi pantulan ketiga?</p>",
+    soal: "<p style='font-weight:600;'>Sebuah bola milik Endang, Danang,dan Herlin dijatuhkan dari ketinggian 16 meter. Setiap pantulan mencapai setengah dari tinggi sebelumnya. Berapa tinggi pantulan ketiga?</p>",
     kunci: `
       <div style='text-align:left; line-height:1.6;'>
         <strong>Diketahui:</strong><br>
